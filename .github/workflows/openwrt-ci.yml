@@ -10,9 +10,9 @@
 name: OpenWrt-CI
 
 on:
-  #push:
-    #branches: 
-      #- master
+  push:
+    branches: 
+      - master
   # schedule:
   #    - cron: 0 20 * * *
   #  release:
@@ -111,9 +111,9 @@ jobs:
           EOF
 
           # 固件压缩:
-          cat >> .config <<EOF
-          CONFIG_TARGET_IMAGES_GZIP=y
-          EOF
+          # cat >> .config <<EOF
+          # CONFIG_TARGET_IMAGES_GZIP=y
+          # EOF
 
           # 编译UEFI固件:
           cat >> .config <<EOF
@@ -168,6 +168,15 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-app-ssr-plus=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_plugin=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2=y
+          CONFIG_PACKAGE_luci-app-upnp=y
+          CONFIG_PACKAGE_luci-app-v2ray-server=y
+          CONFIG_PACKAGE_luci-app-zerotier=y
           EOF
 
           # LuCI主题:
