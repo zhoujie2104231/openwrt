@@ -253,6 +253,18 @@ define Device/rakwireless_rak633
 endef
 TARGET_DEVICES += rakwireless_rak633
 
+define Device/ravpower_rp-wd009
+  IMAGE_SIZE := 14272k
+  DEVICE_VENDOR := RAVPower
+  DEVICE_MODEL := RP-WD009
+  UBOOT_PATH := $(STAGING_DIR_IMAGE)/ravpower_rp-wd009-u-boot.bin
+  DEVICE_PACKAGES := kmod-mt76x0e kmod-usb2 kmod-usb-ohci \
+	kmod-sdhci-mt7620 kmod-i2c-mt7628 ravpower-mcu
+  IMAGES += factory.bin
+  IMAGE/factory.bin := $$(sysupgrade_bin) | ravpower-wd009-factory
+endef
+TARGET_DEVICES += ravpower_rp-wd009
+
 define Device/skylab_skw92a
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := Skylab
@@ -555,6 +567,16 @@ define Device/wavlink_wl-wn575a3
   SUPPORTED_DEVICES += wl-wn575a3
 endef
 TARGET_DEVICES += wavlink_wl-wn575a3
+
+define Device/wavlink_wl-wn577a2
+  IMAGE_SIZE := 7872k
+  DEVICE_VENDOR := Wavlink
+  DEVICE_MODEL := WL-WN577A2
+  DEVICE_ALT0_VENDOR := Maginon
+  DEVICE_ALT0_MODEL := WLR-755
+  DEVICE_PACKAGES := kmod-mt76x0e
+endef
+TARGET_DEVICES += wavlink_wl-wn577a2
 
 define Device/widora_neo-16m
   IMAGE_SIZE := 16064k
